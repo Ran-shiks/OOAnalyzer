@@ -1,8 +1,11 @@
 
 
-import metrics.ClassMetrics;
-import metrics.MetricVisitor;
+import clean_metrics.MetricsCalculator;
+import clean_metrics.ClassMetrics;
+import clean_metrics.MetricVisitor;
 import parser.*;
+
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -28,6 +31,16 @@ public class Main {
 
         MetricVisitor visitor = new MetricVisitor();
         root.jjtAccept(visitor, null);
+        Map<String, ClassMetrics> metricsMap = visitor.getMetricsMap();
+
+        MetricsCalculator calc = new MetricsCalculator(metricsMap);
+        calc.computeMetrics();
+
+
+        /*
+        MetricVisitor visitor = new MetricVisitor();
+        assert root != null;
+        root.jjtAccept(visitor, null);
 
         for (var entry : visitor.getMetricsMap().entrySet()) {
             ClassMetrics m = entry.getValue();
@@ -41,12 +54,10 @@ public class Main {
             System.out.println("  LCOM: " + m.getLcom());
 
         }
-
-
-
-
         //CKMetricsVisitor visitor = new CKMetricsVisitor();
         //root.jjtAccept(visitor, null);
+
+         */
     }
 }
 
