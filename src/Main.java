@@ -35,7 +35,7 @@ public class Main {
 
         MetricsCalculator calc = new MetricsCalculator(metricsMap);
         calc.computeMetrics();
-        calc.exportMetricsToCSV("/Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/src/report/metrics.csv");
+        calc.exportMetricsToCSV("/Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/src/report/esempioComplesso2.csv");
 
 
         /*
