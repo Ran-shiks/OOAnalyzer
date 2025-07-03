@@ -1,6 +1,8 @@
 package clean_metrics;
 
 import java.util.*;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class MetricsCalculator {
 
@@ -130,6 +132,43 @@ public class MetricsCalculator {
         }
         return couplingOut.size() + couplingIn.size() - couplingInOut.size();
     }
+
+
+    public void exportMetricsToCSV(String filename) {
+        try (FileWriter writer = new FileWriter(filename)) {
+            // Intestazione colonne
+            writer.append("ClassName,WMC,DIT,NOC,CBO,AdvCBO,RFC,LCOM\n");
+
+            // Per ogni classe calcola metriche e scrive riga CSV
+            for (ClassMetrics cm : classMetricsMap.values()) {
+                String className = cm.getClassName();
+
+                int wmc = computeWMC(cm);
+                int dit = computeDIT(cm);
+                int noc = cm.getChildren().size();
+                int cbo = computeCBO(cm);
+                int advCbo = ComputeAdvancedCBO(cm);
+                int rfc = computeRFC(cm);
+                int lcom = computeLCOM(cm);
+
+                writer.append(className).append(",")
+                        .append(String.valueOf(wmc)).append(",")
+                        .append(String.valueOf(dit)).append(",")
+                        .append(String.valueOf(noc)).append(",")
+                        .append(String.valueOf(cbo)).append(",")
+                        .append(String.valueOf(advCbo)).append(",")
+                        .append(String.valueOf(rfc)).append(",")
+                        .append(String.valueOf(lcom)).append("\n");
+            }
+
+            writer.flush();
+            System.out.println("Metriche esportate correttamente su " + filename);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Errore durante l'esportazione delle metriche su file CSV.");
+        }
+    }
+
 
 }
 
