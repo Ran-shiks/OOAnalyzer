@@ -21,7 +21,7 @@ In questo modo il progetto combina concetti di compilatori e di analisi statica 
 * **Output**: il risultato del tool sarà un report testuale (in file) che elenchi, per ogni classe individuata nel sorgente, i valori delle metriche richieste. Ad esempio si potrà produrre un’uscita tabellare o CSV con righe del tipo:
 
   ```
-  Classe, WMC, DIT, NOC, CBO, RFC, LCOM
+  Classe, WMC, DIT, NOC, CBO, advCBO, RFC, LCOM
   ```
 
   È essenziale documentare chiaramente il formato di output e includere esempi. Il report dovrà essere leggibile e, se possibile, ordinato per rilevanza o nome di classe.
@@ -48,6 +48,10 @@ Si richiede di calcolare almeno **sei metriche OO ben note**, preferibilmente la
 
 * **CBO (Coupling Between Object classes)**
   Misura il coupling, ovvero il **numero di occorrenze di collaborazioni o dipendenze fra una classe e le altre classi del sistema**. Un alto valore di CBO riduce la modularità e la riusabilità, aumentando la fragilità del software.
+
+* **Advanced CBO (Advanced Coupling Between Object classes)**
+  Misura il coupling, ovvero il **numero di occorrenze di collaborazioni o dipendenze fra una classe e le altre classi del sistema**. Un alto valore di CBO riduce la modularità e la riusabilità, aumentando la fragilità del software. Misurata secondo la relazione AdvCBO = |couplingOut| + |couplingIn| - |couplingInOut|.
+
 
 * **RFC (Response For a Class)**
   Definisce la dimensione del metodo di risposta di una classe: è **il numero di metodi che possono essere invocati in risposta a un messaggio inviato a un oggetto della classe**. Un valore alto di RFC significa che la classe interagisce con molte altre funzionalità, aumentando la complessità di test e debugging.
@@ -317,6 +321,7 @@ La classe `MetricsCalculator` si occupa del calcolo effettivo delle metriche di 
         * **DIT (Depth of Inheritance Tree)**
         * **NOC (Number of Children)**
         * **CBO (Coupling Between Object classes)**
+        * **AdvCBO (Advanced Coupling Between Object classes)**
         * **RFC (Response For a Class)**
         * **LCOM (Lack of Cohesion of Methods)**
     * Stampa i valori calcolati in output formattato.
@@ -338,6 +343,10 @@ La classe `MetricsCalculator` si occupa del calcolo effettivo delle metriche di 
 **CBO (Coupling Between Object classes)**
 
 * Conta quante classi differenti la classe corrente utilizza o istanzia (coupling).
+
+**AdvCBO (Advanced Coupling Between Object classes)**
+
+* Calcola AdvCBO = |couplingOut| + |couplingIn| - |couplingInOut|.
 
 **RFC (Response For a Class)**
 
@@ -487,6 +496,57 @@ Il `MetricVisitor` raccoglie le classi accoppiate:
 Tutto viene salvato in `ClassMetrics.coupledClasses` come `Set<String>` per evitare duplicati.
 
 **In pratica: CBO = numero di classi diverse utilizzate come parametri o istanziate**.
+
+### Advanced CBO
+
+#### Teoria 
+
+Nella definizione originale del 1994 di Chidamber & Kemerer, la metrica CBO (Coupling Between Object Classes) di una classe è semplicemente:
+
+Il numero di classi a cui una classe è accoppiata.
+
+E due classi si dicono accoppiate se una usa metodi o attributi dell’altra, o viceversa.
+In pratica basta contare quante altre classi la classe in esame “tocca” (accoppiamento in uscita) più quante classi “la toccano” (accoppiamento in ingresso).
+
+La formula `in + out − inout` viene a volte proposta in contesti più avanzati di analisi delle dipendenze per:
+
+distinguere **afferent coupling** (classi che dipendono dalla classe)
+
+**efferent coupling** (classi da cui dipende la classe in esame)
+
+**common coupling** (accoppiamento condiviso)
+
+ma non è la formula standard del CK suite. 
+Il CBO classico di CK è solo quante altre classi sono in relazione con questa.
+Quindi proprio per questo si è voluto aggiungere una metrica ulteriore, AdvancedCBO.
+
+Questa metrica è definita proprio come `in + out − inout`
+
+#### In Pratica
+
+```
+    public int ComputeAdvancedCBO(ClassMetrics cmo) {
+        // Passaggio 0: riprendo couplingOut classi usate da questa classe
+        Set<String> couplingOut = cmo.getCoupledClasses();
+        // Passaggio 1: costruisco mappa da classe -> set di classi che la usano (couplingIn)
+        Set<String> couplingIn = new HashSet<>();
+
+        for (ClassMetrics cm : classMetricsMap.values()) {
+            if (cm.getCoupledClasses().contains(cmo.getClassName())) {
+                couplingIn.add(cm.getClassName());
+            }
+        }
+        Set<String> couplingInOut = new HashSet<>();
+
+        // Passaggio 2: calcola intersezione couplingInOut per ogni classe
+        for (String cls : couplingOut) {
+            if (couplingIn.contains(cls)) {
+                couplingInOut.add(cls);
+            }
+        }
+        return couplingOut.size() + couplingIn.size() - couplingInOut.size();
+    }
+```
 
 ### RFC (Response For a Class)
 

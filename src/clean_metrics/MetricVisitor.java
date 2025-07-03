@@ -85,7 +85,9 @@ public class MetricVisitor extends JavaParserDefaultVisitor {
     public Object visit(ASTFormalParameter node, Object data) throws Exception {
         if (currentClass != null) {
             String paramType = node.toString();
-            metricsMap.get(currentClass).addCoupledClass(paramType);
+            if (!isIgnorableType(paramType)) {
+                metricsMap.get(currentClass).addCoupledClass(paramType);
+            }
         }
         return super.visit(node, data);
     }
@@ -94,7 +96,10 @@ public class MetricVisitor extends JavaParserDefaultVisitor {
     public Object visit(ASTAllocationExpression node, Object data) throws Exception {
         if (currentClass != null) {
             String instantiatedType = node.toString();
-            metricsMap.get(currentClass).addCoupledClass(instantiatedType);
+            if (!isIgnorableType(instantiatedType)) {
+                metricsMap.get(currentClass).addCoupledClass(instantiatedType);
+            }
+
         }
         return super.visit(node, data);
     }
@@ -170,6 +175,16 @@ public class MetricVisitor extends JavaParserDefaultVisitor {
             return methodCalls;
         }
     }
+
+    private boolean isIgnorableType(String type) {
+        if (type == null) return true;
+        type = type.trim();
+        return type.isEmpty()
+                || type.equals(currentClass)
+                || type.matches("int|long|double|float|char|byte|short|boolean|void")
+                || type.startsWith("java.lang");
+    }
+
 }
 
 

@@ -20,10 +20,11 @@ public class MetricsCalculator {
             int cbo = computeCBO(cm);
             int rfc = computeRFC(cm);
             int lcom = computeLCOM(cm);
+            int cboAdvanced = ComputeAdvancedCBO(cm);
 
             System.out.printf(
-                    "Class: %s%n WMC: %d%n DIT: %d%n NOC: %d%n CBO: %d%n RFC: %d%n LCOM: %d%n%n",
-                    className, wmc, dit, noc, cbo, rfc, lcom
+                    "Class: %s%n WMC: %d%n DIT: %d%n NOC: %d%n CBO: %d%n AdvCBO: %d%n RFC: %d%n LCOM: %d%n%n",
+                    className, wmc, dit, noc, cbo, cboAdvanced, rfc, lcom
             );
         }
     }
@@ -97,6 +98,37 @@ public class MetricsCalculator {
         if (lcom < 0) lcom = 0;
 
         return lcom;
+    }
+
+    /**
+     * Calcola il valore della metrica CBO avanzata.
+     * Formula:
+     *   AdvCBO = |couplingOut| + |couplingIn| - |couplingInOut|
+     * dove
+     *   couplingOut = classi usate da questa classe
+     *   couplingIn = classi che usano questa classe
+     *   couplingInOut = intersezione tra couplingOut e couplingIn
+     */
+    public int ComputeAdvancedCBO(ClassMetrics cmo) {
+        // Passaggio 0: riprendo couplingOut classi usate da questa classe
+        Set<String> couplingOut = cmo.getCoupledClasses();
+        // Passaggio 1: costruisco mappa da classe -> set di classi che la usano (couplingIn)
+        Set<String> couplingIn = new HashSet<>();
+
+        for (ClassMetrics cm : classMetricsMap.values()) {
+            if (cm.getCoupledClasses().contains(cmo.getClassName())) {
+                couplingIn.add(cm.getClassName());
+            }
+        }
+        Set<String> couplingInOut = new HashSet<>();
+
+        // Passaggio 2: calcola intersezione couplingInOut per ogni classe
+        for (String cls : couplingOut) {
+            if (couplingIn.contains(cls)) {
+                couplingInOut.add(cls);
+            }
+        }
+        return couplingOut.size() + couplingIn.size() - couplingInOut.size();
     }
 
 }
