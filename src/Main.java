@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         System.out.println("Java Parser Version 1.1:  Reading from file ");
         Node root = null;
-        JavaParser OOparser = new JavaParser("/Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/input/esempioComplesso2.java");
+        JavaParser OOparser = new JavaParser("/Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/input/Esempio Java Project/Originale/Main.java");
         try {
             root = OOparser.CompilationUnit();
             System.out.println("Java Parser Version 1.1:  Java program parsed successfully.");
@@ -35,9 +35,28 @@ public class Main {
 
         MetricsCalculator calc = new MetricsCalculator(metricsMap);
         calc.computeMetrics();
-        calc.exportMetricsToCSV("/Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/src/report/esempioComplesso2.csv");
+        calc.exportMetricsToCSV("/Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/src/report/originale.csv");
 
 
+
+
+        Node root2 = null;
+        JavaParser OOparser2 = new JavaParser("/Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/input/Esempio Java Project/chatGPT/main.java");
+        try {
+            root2 = OOparser2.CompilationUnit();
+            System.out.println("Java Parser Version 1.1:  Java program parsed successfully.");
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Java Parser Version 1.1:  Encountered errors during parse.");
+        }
+
+        MetricVisitor visitor2 = new MetricVisitor();
+        root2.jjtAccept(visitor2, null);
+        Map<String, ClassMetrics> metricsMap2 = visitor.getMetricsMap();
+
+        MetricsCalculator calc2 = new MetricsCalculator(metricsMap2);
+        calc2.computeMetrics();
+        calc2.exportMetricsToCSV("/Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/src/report/chatGPT.csv");
         /*
         MetricVisitor visitor = new MetricVisitor();
         assert root != null;
