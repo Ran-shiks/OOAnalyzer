@@ -1,0 +1,170 @@
+Java Parser Version 1.1:  Reading from file
+Java Parser Version 1.1:  Java program parsed successfully.
+Campo trovato in Archivio: films
+Campo trovato in Archivio: articoli
+Campo trovato in Archivio: prenotazioni
+Campo trovato in Archivio: fileStoricoScontriniStream
+Campo trovato in Articolo: nome
+Campo trovato in Articolo: prezzo
+Campo trovato in Film: titolo
+Campo trovato in Film: salaProiezione
+Campo trovato in Film: orario
+Campo trovato in Film: prezzoBiglietto
+Campo trovato in Film: formatoOrario
+Campo trovato in Prenotazione: id
+Campo trovato in Prenotazione: persone
+Campo trovato in Prenotazione: data
+Campo trovato in Prenotazione: film
+Campo trovato in Prenotazione: articoli
+Campo trovato in Prenotazione: formatoData
+Class: Archivio
+WMC: 14
+DIT: 0
+NOC: 0
+CBO: 2
+AdvCBO: 2
+RFC: 52
+LCOM: 91
+
+Class: Film
+WMC: 6
+DIT: 0
+NOC: 0
+CBO: 2
+AdvCBO: 2
+RFC: 18
+LCOM: 15
+
+Class: Prenotazione
+WMC: 7
+DIT: 0
+NOC: 0
+CBO: 2
+AdvCBO: 2
+RFC: 25
+LCOM: 21
+
+Class: Snack
+WMC: 1
+DIT: 1
+NOC: 0
+CBO: 1
+AdvCBO: 1
+RFC: 1
+LCOM: 0
+
+Class: Bevanda
+WMC: 1
+DIT: 1
+NOC: 0
+CBO: 1
+AdvCBO: 1
+RFC: 1
+LCOM: 0
+
+Class: Articolo
+WMC: 5
+DIT: 0
+NOC: 2
+CBO: 2
+AdvCBO: 2
+RFC: 14
+LCOM: 10
+
+Metriche esportate correttamente su /Desktop/JetbrainsProjects/OOAnalyzer/src/report/originale.csv
+Java Parser Version 1.1:  Java program parsed successfully.
+Campo trovato in Film: titolo
+Campo trovato in Film: sala
+Campo trovato in Film: orario
+Campo trovato in Film: prezzo
+Metodo toString usa campo: titolo
+Metodo toString usa campo: sala
+Metodo toString usa campo: orario
+Metodo toString usa campo: prezzo
+Campo trovato in Articolo: nome
+Campo trovato in Articolo: categoria
+Campo trovato in Articolo: prezzo
+Metodo toString usa campo: nome
+Metodo toString usa campo: categoria
+Metodo toString usa campo: prezzo
+Metodo toString usa campo: nome
+Metodo toString usa campo: categoria
+Metodo toString usa campo: prezzo
+Campo trovato in Prenotazione: id
+Campo trovato in Prenotazione: numeroPersone
+Campo trovato in Prenotazione: film
+Campo trovato in Prenotazione: articoli
+Campo trovato in Prenotazione: data
+Metodo toString usa campo: id
+Metodo toString usa campo: numeroPersone
+Metodo toString usa campo: film
+Metodo calcolaTotale usa campo: numeroPersone
+Metodo stampaScontrino usa campo: data
+Metodo stampaScontrino usa campo: id
+Metodo stampaScontrino usa campo: film
+Metodo stampaScontrino usa campo: numeroPersone
+Metodo toFileString usa campo: data
+Metodo toFileString usa campo: id
+Metodo toFileString usa campo: numeroPersone
+Metodo fromFileString usa campo: film
+Metodo fromFileString usa campo: id
+Metodo fromFileString usa campo: film
+Metodo fromFileString usa campo: data
+Metodo fromFileString usa campo: data
+Class: Archivio
+WMC: 14
+DIT: 0
+NOC: 0
+CBO: 2
+AdvCBO: 2
+RFC: 52
+LCOM: 91
+
+Class: Film
+WMC: 6
+DIT: 0
+NOC: 0
+CBO: 2
+AdvCBO: 2
+RFC: 18
+LCOM: 15
+
+Class: Prenotazione
+WMC: 7
+DIT: 0
+NOC: 0
+CBO: 2
+AdvCBO: 2
+RFC: 25
+LCOM: 21
+
+Class: Snack
+WMC: 1
+DIT: 1
+NOC: 0
+CBO: 1
+AdvCBO: 1
+RFC: 1
+LCOM: 0
+
+Class: Bevanda
+WMC: 1
+DIT: 1
+NOC: 0
+CBO: 1
+AdvCBO: 1
+RFC: 1
+LCOM: 0
+
+Class: Articolo
+WMC: 5
+DIT: 0
+NOC: 2
+CBO: 2
+AdvCBO: 2
+RFC: 14
+LCOM: 10
+
+Metriche esportate correttamente su /Desktop/JetbrainsProjects/OOAnalyzer/src/report/chatGPT.csv
+
+Process finished with exit code 0

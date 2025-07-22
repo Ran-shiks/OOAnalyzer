@@ -1,7 +1,7 @@
 ClassName,WMC,DIT,NOC,CBO,AdvCBO,RFC,LCOM
-Account,2,0,3,1,1,2,1
-CurrentAccount,2,1,0,1,1,8,1
-SavingsAccount,2,1,0,1,1,8,1
-Main,1,0,0,2,2,13,0
-BankingApplication,10,0,0,2,2,34,0
-SalaryAccount,2,1,0,1,1,8,1
+Archivio,14,0,0,2,2,52,91
+Film,6,0,0,2,2,18,15
+Prenotazione,7,0,0,2,2,25,21
+Snack,1,1,0,1,1,1,0
+Bevanda,1,1,0,1,1,1,0
+Articolo,5,0,2,2,2,14,10

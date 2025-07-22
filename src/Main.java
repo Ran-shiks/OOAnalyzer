@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         System.out.println("Java Parser Version 1.1:  Reading from file ");
         Node root = null;
-        JavaParser OOparser = new JavaParser("/Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/input/Esempio Java Project/Originale/Main.java");
+        JavaParser OOparser = new JavaParser("/Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/input/Esempio Java Project/prova/prova.java");
         try {
             root = OOparser.CompilationUnit();
             System.out.println("Java Parser Version 1.1:  Java program parsed successfully.");
@@ -41,7 +41,7 @@ public class Main {
 
 
         Node root2 = null;
-        JavaParser OOparser2 = new JavaParser("/Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/input/Esempio Java Project/chatGPT/main.java");
+        JavaParser OOparser2 = new JavaParser("/Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/input/Esempio Java Project/prova2/prova2.java");
         try {
             root2 = OOparser2.CompilationUnit();
             System.out.println("Java Parser Version 1.1:  Java program parsed successfully.");
