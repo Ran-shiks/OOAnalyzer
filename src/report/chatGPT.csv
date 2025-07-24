@@ -1,7 +1,5 @@
 ClassName,WMC,DIT,NOC,CBO,AdvCBO,RFC,LCOM
-Archivio,14,0,0,2,2,52,91
-Film,6,0,0,2,2,18,15
-Prenotazione,7,0,0,2,2,25,21
-Snack,1,1,0,1,1,1,0
-Bevanda,1,1,0,1,1,1,0
-Articolo,5,0,2,2,2,14,10
+CinemaManager,0,0,0,0,0,0,0
+Film,2,0,0,2,2,14,1
+Prenotazione,5,0,0,2,2,36,0
+Articolo,2,0,0,2,2,13,1

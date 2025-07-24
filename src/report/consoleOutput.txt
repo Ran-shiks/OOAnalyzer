@@ -1,3 +1,4 @@
+/opt/homebrew/Cellar/openjdk/23.0.2/libexec/openjdk.jdk/Contents/Home/bin/java -javaagent:/Users/izzofrancesco/Applications/IntelliJ IDEA Ultimate.app/Contents/lib/idea_rt.jar=49260 -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/out/production/OOAnalyzer Main
 Java Parser Version 1.1:  Reading from file
 Java Parser Version 1.1:  Java program parsed successfully.
 Campo trovato in Archivio: films
@@ -18,60 +19,60 @@ Campo trovato in Prenotazione: film
 Campo trovato in Prenotazione: articoli
 Campo trovato in Prenotazione: formatoData
 Class: Archivio
-WMC: 14
-DIT: 0
-NOC: 0
-CBO: 2
-AdvCBO: 2
-RFC: 52
-LCOM: 91
+ WMC: 14
+ DIT: 0
+ NOC: 0
+ CBO: 2
+ AdvCBO: 2
+ RFC: 52
+ LCOM: 91
 
 Class: Film
-WMC: 6
-DIT: 0
-NOC: 0
-CBO: 2
-AdvCBO: 2
-RFC: 18
-LCOM: 15
+ WMC: 6
+ DIT: 0
+ NOC: 0
+ CBO: 2
+ AdvCBO: 2
+ RFC: 18
+ LCOM: 15
 
 Class: Prenotazione
-WMC: 7
-DIT: 0
-NOC: 0
-CBO: 2
-AdvCBO: 2
-RFC: 25
-LCOM: 21
+ WMC: 7
+ DIT: 0
+ NOC: 0
+ CBO: 2
+ AdvCBO: 2
+ RFC: 25
+ LCOM: 21
 
 Class: Snack
-WMC: 1
-DIT: 1
-NOC: 0
-CBO: 1
-AdvCBO: 1
-RFC: 1
-LCOM: 0
+ WMC: 1
+ DIT: 1
+ NOC: 0
+ CBO: 1
+ AdvCBO: 1
+ RFC: 1
+ LCOM: 0
 
 Class: Bevanda
-WMC: 1
-DIT: 1
-NOC: 0
-CBO: 1
-AdvCBO: 1
-RFC: 1
-LCOM: 0
+ WMC: 1
+ DIT: 1
+ NOC: 0
+ CBO: 1
+ AdvCBO: 1
+ RFC: 1
+ LCOM: 0
 
 Class: Articolo
-WMC: 5
-DIT: 0
-NOC: 2
-CBO: 2
-AdvCBO: 2
-RFC: 14
-LCOM: 10
+ WMC: 5
+ DIT: 0
+ NOC: 2
+ CBO: 2
+ AdvCBO: 2
+ RFC: 14
+ LCOM: 10
 
-Metriche esportate correttamente su /Desktop/JetbrainsProjects/OOAnalyzer/src/report/originale.csv
+Metriche esportate correttamente su /Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/src/report/originale.csv
 Java Parser Version 1.1:  Java program parsed successfully.
 Campo trovato in Film: titolo
 Campo trovato in Film: sala
@@ -111,60 +112,42 @@ Metodo fromFileString usa campo: id
 Metodo fromFileString usa campo: film
 Metodo fromFileString usa campo: data
 Metodo fromFileString usa campo: data
-Class: Archivio
-WMC: 14
-DIT: 0
-NOC: 0
-CBO: 2
-AdvCBO: 2
-RFC: 52
-LCOM: 91
+Class: CinemaManager
+ WMC: 0
+ DIT: 0
+ NOC: 0
+ CBO: 0
+ AdvCBO: 0
+ RFC: 0
+ LCOM: 0
 
 Class: Film
-WMC: 6
-DIT: 0
-NOC: 0
-CBO: 2
-AdvCBO: 2
-RFC: 18
-LCOM: 15
+ WMC: 2
+ DIT: 0
+ NOC: 0
+ CBO: 2
+ AdvCBO: 2
+ RFC: 14
+ LCOM: 1
 
 Class: Prenotazione
-WMC: 7
-DIT: 0
-NOC: 0
-CBO: 2
-AdvCBO: 2
-RFC: 25
-LCOM: 21
-
-Class: Snack
-WMC: 1
-DIT: 1
-NOC: 0
-CBO: 1
-AdvCBO: 1
-RFC: 1
-LCOM: 0
-
-Class: Bevanda
-WMC: 1
-DIT: 1
-NOC: 0
-CBO: 1
-AdvCBO: 1
-RFC: 1
-LCOM: 0
+ WMC: 5
+ DIT: 0
+ NOC: 0
+ CBO: 2
+ AdvCBO: 2
+ RFC: 36
+ LCOM: 0
 
 Class: Articolo
-WMC: 5
-DIT: 0
-NOC: 2
-CBO: 2
-AdvCBO: 2
-RFC: 14
-LCOM: 10
+ WMC: 2
+ DIT: 0
+ NOC: 0
+ CBO: 2
+ AdvCBO: 2
+ RFC: 13
+ LCOM: 1
 
-Metriche esportate correttamente su /Desktop/JetbrainsProjects/OOAnalyzer/src/report/chatGPT.csv
+Metriche esportate correttamente su /Users/izzofrancesco/Desktop/JetbrainsProjects/OOAnalyzer/src/report/chatGPT.csv
 
 Process finished with exit code 0

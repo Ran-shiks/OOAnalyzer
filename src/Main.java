@@ -52,7 +52,7 @@ public class Main {
 
         MetricVisitor visitor2 = new MetricVisitor();
         root2.jjtAccept(visitor2, null);
-        Map<String, ClassMetrics> metricsMap2 = visitor.getMetricsMap();
+        Map<String, ClassMetrics> metricsMap2 = visitor2.getMetricsMap();
 
         MetricsCalculator calc2 = new MetricsCalculator(metricsMap2);
         calc2.computeMetrics();
